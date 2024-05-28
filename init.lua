@@ -1,17 +1,4 @@
 --Main lua file
-
---main lua file
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.signcolumn = "number"
-
--- used for finding files and live greping local variables.
-vim.g.mapleader = ' '
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -25,4 +12,5 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("vim-options")
 require("lazy").setup("plugins")
