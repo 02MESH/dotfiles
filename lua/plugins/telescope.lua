@@ -1,0 +1,12 @@
+-- telescope plugin
+return {
+  'nvim-telescope/telescope.nvim',
+  tag = '0.1.6',
+  dependencies = { 'nvim-lua/plenary.nvim' },
+  config = function()
+    -- setting up the telescope plugin for fuzzy-finding files
+    local builtin = require('telescope.builtin')
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+  end 
+}
