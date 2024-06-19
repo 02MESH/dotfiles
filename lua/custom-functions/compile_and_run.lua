@@ -19,7 +19,7 @@ local function compile_and_run()
   if vim.v.shell_error == 0 then
     -- Compilation succeeded, run the program in a new terminal split
     print("Running " .. output .. " in a new pane...")
-    vim.cmd('split | terminal ' .. output)
+    vim.cmd('belowright split | terminal ' .. output)
   else
     -- Compilation failed, print the error message
     print("Compilation failed:\n" .. compile_result)
@@ -29,9 +29,10 @@ end
 
 M.compile_and_run = compile_and_run
 -- Createa  user command for CompileAndRun
-vim.api.nvim_create_user_command(
-  'CompileAndRun', 
-  M.compile_and_run, 
+vim.keymap.set(
+  'n',
+  '<leader>cpp',
+  M.compile_and_run,
   {}
 )
 
