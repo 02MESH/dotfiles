@@ -12,12 +12,27 @@ return {
 			local ls = require("luasnip")
 			local s = ls.snippet
 			local t = ls.text_node
-			local i = ls.insert_node
+      local i = ls.insert_node
+
 			ls.add_snippets("lua", {
 				s("hello", {
 					t('print("hello world")'),
 				}),
-			})
+				s("test", {
+					t('if '),
+					i(1, "true"),
+					t(' then '),
+					i(2),
+					t(" end"),
+				}),
+      })
+
+      vim.keymap.set({ "i", "s" }, "<C-]>", function()
+				ls.jump(1)
+			end, { silent = true })
+			vim.keymap.set({ "i", "s" }, "<C-[>", function()
+				ls.jump(-1)
+			end, { silent = true })
 		end,
 	},
 	{
