@@ -1,3 +1,4 @@
+-- NOTE: DAP Protocol
 return {
   "jay-babu/mason-nvim-dap.nvim",
   dependencies = {

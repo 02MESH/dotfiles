@@ -1,7 +1,8 @@
+
 local M = {}
 
 local function compile_and_run()
-  --Get the full path of the current file
+  -- Get the full path of the current file
   local file_path = vim.fn.expand('%:p')
   local file_name = vim.fn.expand('%:t:r')
   local output = '/tmp/' .. file_name
@@ -12,8 +13,8 @@ local function compile_and_run()
   -- Notify the user about the compilation
   print("Compiling " .. file_path .. " with C++17 standard..")
 
-    -- Execute the compile command
-  local compile_result = vim.fn.system(compile_cmd)
+  -- Execute the compile command and capture the output
+  local compile_result = vim.fn.systemlist(compile_cmd)
 
   -- Check if compilation was successful
   if vim.v.shell_error == 0 then
@@ -21,14 +22,18 @@ local function compile_and_run()
     print("Running " .. output .. " in a new pane...")
     vim.cmd('belowright split | terminal ' .. output)
   else
-    -- Compilation failed, print the error message
-    print("Compilation failed:\n" .. compile_result)
+    -- Compilation failed, open a new buffer to show the errors
+    vim.cmd('belowright split')
+    local bufnr = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, compile_result)
+    vim.api.nvim_set_current_buf(bufnr)
+    print("Compilation failed. See the split window for details.")
   end
 end
 
-
 M.compile_and_run = compile_and_run
--- Createa  user command for CompileAndRun
+
+-- Create a user command for CompileAndRun
 vim.keymap.set(
   'n',
   '<leader>cpp',

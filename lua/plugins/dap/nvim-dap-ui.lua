@@ -1,3 +1,4 @@
+-- NOTE: Debugging UI
 return {
   "rcarriga/nvim-dap-ui",
 

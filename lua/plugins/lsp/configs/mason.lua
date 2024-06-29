@@ -1,3 +1,4 @@
+-- NOTE: Package Installer
 return {
 	{
 		"williamboman/mason.nvim",
@@ -18,5 +19,4 @@ return {
 			})
 		end,
 	},
-	
 }
