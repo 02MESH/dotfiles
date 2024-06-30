@@ -1,3 +1,4 @@
+-- NOTE: LSP Configuration
 return {
 	"neovim/nvim-lspconfig",
 	config = function()
