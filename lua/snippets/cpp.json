@@ -4,7 +4,7 @@
     "description": "Main cpp boilerplate",
     "body": [
       "#include <iostream>",
-      "#include <vector",
+      "#include <vector>",
       "#include <string>",
       "#include <cstring>",
       "#include <map>",
@@ -16,6 +16,7 @@
       "#include <tuple>",
       "#include <numeric>",
       "#include <random>",
+      "#include <cctype> //https://en.cppreference.com/w/cpp/header/cctype",
       "",
       "using namespace std;",
       "",
