@@ -22,3 +22,9 @@ vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
 -- Clear search highlight
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+
+-- Window resizing
+vim.keymap.set('n', '=', [[<cmd>vertical resize +5<cr>]]) -- increase size vertically
+vim.keymap.set('n', '-', [[<cmd>vertical resize -5<cr>]]) -- decrease size vertically
+vim.keymap.set('n', '+', [[<cmd>horizontal resize +2<cr>]]) -- decrease size horizontally
+vim.keymap.set('n', '_', [[<cmd>horizontal resize -2<cr>]]) -- increase size horizontally

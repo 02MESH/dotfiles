@@ -7,7 +7,7 @@ return {
   config = function()
     -- setting up the telescope plugin for fuzzy-finding files
     local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+    vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = "Find file" })
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
   end
   },
