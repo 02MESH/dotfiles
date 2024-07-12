@@ -3,6 +3,7 @@
     "prefix": "cpp",
     "description": "Main cpp boilerplate",
     "body": [
+      "#include <cstdio> //https://github.com/mfussenegger/nvim-dap/issues/1061#issuecomment-1773218073",
       "#include <iostream>",
       "#include <vector>",
       "#include <string>",
@@ -21,6 +22,7 @@
       "using namespace std;",
       "",
       "int main() {",
+      "setvbuf(stdout, nullptr, _IONBF, 0); //For debugging the buffer correctly)",
       "\t${0}",
       "\treturn 1;",
       "}"

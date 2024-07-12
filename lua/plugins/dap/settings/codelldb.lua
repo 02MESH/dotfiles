@@ -1,14 +1,14 @@
-local dap = require "dap"
-local extension_path = vim.env.HOME .. "/.local/share/nvim/mason/packages/codelldb/extension/"
-local codelldb_path = extension_path .. "adapter/codelldb"
+local dap = require("dap")
+local codelldb_path = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/adapter/codelldb"
+print(codelldb_path)
 
 --codelldb configuration
 dap.adapters.codelldb = {
   type = "server",
-  port = 13000,
+  port = "${port}",
   executable = {
     command = codelldb_path,
-    args = { "--port", "13000" },
+    args = { "--port", "${port}" },
   },
 }
 
@@ -22,6 +22,7 @@ dap.configurations.cpp = {
     end,
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
+    args = {},
   },
 }
 
