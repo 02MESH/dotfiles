@@ -1,3 +1,4 @@
+-- NOTE: C++ compile script
 
 local M = {}
 
@@ -5,7 +6,7 @@ local function compile_and_run()
   -- Get the full path of the current file
   local file_path = vim.fn.expand('%:p')
   local file_name = vim.fn.expand('%:t:r')
-  local output = '/tmp/' .. file_name
+  local output = '/tmp/c++/' .. file_name
 
   -- Compile command with C++17 standard
   local compile_cmd = 'g++ -std=c++17 ' .. file_path .. ' -o ' .. output
@@ -20,7 +21,10 @@ local function compile_and_run()
   if vim.v.shell_error == 0 then
     -- Compilation succeeded, run the program in a new terminal split
     print("Running " .. output .. " in a new pane...")
+    -- Open a new terminal split and run the program
     vim.cmd('belowright split | terminal ' .. output)
+    -- Switch to terminal mode to allow input
+    vim.cmd('startinsert')
   else
     -- Compilation failed, open a new buffer to show the errors
     vim.cmd('belowright split')
@@ -38,7 +42,7 @@ vim.keymap.set(
   'n',
   '<leader>cpp',
   M.compile_and_run,
-  {}
+  { desc = "Run C++ Program" }
 )
 
 return M

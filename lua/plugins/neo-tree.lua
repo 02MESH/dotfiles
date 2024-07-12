@@ -13,7 +13,15 @@ return {
 				position = "left",
 				width = 30,
 			},
+			event_handlers = {
+				{
+					event = "file_opened",
+					handler = function()
+						require("neo-tree.command").execute({ action = "close" })
+					end,
+				},
+			},
 		})
-    vim.api.nvim_set_keymap('n', '\\', ":Neotree toggle<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "\\", ":Neotree toggle<CR>", { noremap = true, silent = true })
 	end,
 }
