@@ -11,6 +11,5 @@ return {
 				-- require("none-ls.diagnostics.eslint"), -- requires none -
 			},
 		})
-		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Lint Buffer" })
 	end,
 }

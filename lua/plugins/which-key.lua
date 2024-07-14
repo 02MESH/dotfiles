@@ -1,35 +1,34 @@
 -- NOTE: GUI for display keybinds
 return {
 	"folke/which-key.nvim",
+	dependencies = {
+		"echasnovski/mini.icons",
+	},
 	event = "VeryLazy",
 	init = function()
 		vim.o.timeout = true
 		vim.o.timeoutlen = 300
 	end,
 	opts = {
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
+		icons = {
+			breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+			separator = "➜", -- symbol used between a key and it's label
+			group = "", -- symbol prepended to a group
+		},
 	},
 	config = function()
-		require("which-key").register({
-			{
-				["<leader>"] = {
-					d = { name = "󰃤 Debugger" },
-					-- r = { name = " Runner" },
-					-- s = { name = "󰔚 Sessions" },
-					f = { name = " Find" },
-					-- g = { name = "󰊢 Git" },
-					-- h = { name = " Harpoon" },
-					l = { name = " LSP" },
-					-- n = { name = " Neovim" },
-					o = { name = " Options" },
-					p = { name = " Plugins" },
-					t = { name = " Terminal" },
-					-- T = { name = "󰙨 Tests" },
-					-- v = { name = " Venv" },
-				},
-			},
+		require("which-key").add({
+				{ "<leader>T", group = "󰙨 Tests" },
+				{ "<leader>d", group = "Debugging" },
+				{ "<leader>f", group = " Find" },
+				{ "<leader>g", group = "Git" },
+				{ "<leader>h", group = " Harpoon" },
+				{ "<leader>l", group = " LSP" },
+				{ "<leader>n", group = " Neovim" },
+				{ "<leader>o", group = " Options" },
+				{ "<leader>p", group = " Plugins" },
+				{ "<leader>r", group = " Runner" },
+				{ "<leader>t", group = "Terminal" },
 		})
 	end,
 }
